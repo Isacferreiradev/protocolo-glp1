@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Protocolo GLP-1: Rotina, Controle e Execução. O guia prático que organiza sua rotina, alimentação e acompanhamento em um único lugar." />
+  <title>Protocolo GLP-1: Rotina, Controle e Execução</title>
+
+  <!-- Fontes Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&family=Lora:ital,wght@1,500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary-900': '#7F1D1D',
+            'primary-700': '#B91C1C',
+            'primary-500': '#EF4444',
+            'primary-100': '#FEE2E2',
+            'accent-600': '#1D4ED8',
+            'accent-500': '#2563EB',
+            'accent-100': '#DBEAFE',
+            'success-500': '#10B981',
+            'success-100': '#D1FAE5',
+            'premium-600': '#CA8A04',
+            'premium-500': '#EAB308',
+            'premium-100': '#FEF3C7',
+            'neutral-900': '#111827',
+            'neutral-700': '#374151',
+            'neutral-500': '#6B7280',
+            'neutral-200': '#E5E7EB',
+            'neutral-100': '#F9FAFB'
+          },
+          fontFamily: {
+            'display': ['"Plus Jakarta Sans"', 'sans-serif'],
+            'body': ['"Inter"', 'sans-serif'],
+            'quote': ['"Lora"', 'serif']
+          },
+          keyframes: {
+            'wobble-grow': {
+              '0%, 100%': { transform: 'scale(1) translateY(0)' },
+              '10%': { transform: 'scale(1.05) translateY(-4px) rotate(-3deg)' },
+              '20%': { transform: 'scale(1.05) translateY(-4px) rotate(3deg)' },
+              '30%': { transform: 'scale(1.05) translateY(-4px) rotate(-3deg)' },
+              '40%': { transform: 'scale(1.05) translateY(-4px) rotate(3deg)' },
+              '50%': { transform: 'scale(1) translateY(0) rotate(0)' }
+            }
+          },
+          animation: {
+            'wobble-grow': 'wobble-grow 2.5s ease-in-out infinite'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: #111827; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-quote { font-family: 'Lora', serif; font-style: italic; }
+    .tabular-nums { font-variant-numeric: tabular-nums; }
+
+    /* Fade-in on scroll */
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity .7s ease-out, transform .7s ease-out; }
+    .fade-in.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* Sticky mobile CTA */
+    #mobileCta { transform: translateY(120%); transition: transform .35s ease; }
+    #mobileCta.show { transform: translateY(0); }
+
+    /* Accordion */
+    details > summary { list-style: none; cursor: pointer; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] .chev { transform: rotate(180deg); }
+    .chev { transition: transform .25s ease; }
+
+    /* Focus */
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 3px solid #EA580C;
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    /* Strike emphasis */
+    .strike-heavy { text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: #EF4444; }
+
+    /* Decorative quote */
+    .bigquote::before {
+      content: '\201C';
+      font-family: 'Lora', serif;
+      font-size: 5rem;
+      line-height: 0;
+      color: #EA580C;
+      vertical-align: -0.4em;
+      margin-right: 0.1em;
+    }
+
+    /* Plan card highlight lift */
+    @media (min-width: 1024px) {
+      .plan-featured { transform: scale(1.04); }
+    }
+  </style>
+</head>
+<body class="bg-neutral-100 text-neutral-900">
+
+  <!-- SEÇÃO 1: TOP BAR DE URGÊNCIA -->
+  <div class="bg-neutral-900 text-white text-sm py-2 text-center px-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-center gap-2 flex-wrap">
+      <i data-lucide="lock" class="w-4 h-4 text-accent-500" aria-hidden="true"></i>
+      <span>Acesso digital imediato após a compra</span>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- SEÇÃO 2: HERO -->
+    <section class="relative bg-white pt-12 md:pt-20 overflow-hidden">
+      <div class="max-w-4xl mx-auto px-5 md:px-8 text-center relative z-10">
+
+        <!-- Doctor Image (Saindo da headline, acima) -->
+        <div class="relative w-full max-w-sm mx-auto flex justify-center pointer-events-none -mb-8 md:-mb-12">
+          <!-- Blob de fundo suave para destacar o médico -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-accent-500/10 rounded-full blur-3xl -z-10"></div>
+          
+          <!-- Fade out na base com mask-image -->
+          <div class="relative w-full flex justify-center" style="-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);">
+            <img src="medico.png" alt="Médico Clínico" class="w-full h-auto object-contain object-bottom drop-shadow-xl" />
+          </div>
+        </div>
+
+        <!-- Text Content -->
+        <div class="relative z-10">
+          <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.1] text-neutral-900 drop-shadow-sm">
+            Um sistema simples para organizar sua rotina durante o uso de GLP-1 <br class="hidden md:block" /><span class="bg-primary-700 text-white px-3 py-1 rounded-xl shadow-lg inline-block transform -rotate-1">sem improviso diário</span>
+          </h1>
+
+          <p class="mt-6 md:mt-8 text-lg md:text-2xl text-neutral-600 font-medium leading-relaxed max-w-3xl mx-auto">
+            Existe um motivo pra essa sensação constante de <em class="text-accent-600 not-italic font-bold">"será que estou fazendo certo?"</em> — e ele não tem nada a ver com força de vontade.
+          </p>
+
+          <!-- CTA Principal -->
+          <div class="mt-8 md:mt-10">
+            <a href="#planos" class="inline-flex items-center justify-center gap-3 w-full sm:w-auto bg-accent-600 hover:bg-accent-500 text-white font-black tracking-wide text-lg md:text-xl px-10 py-5 rounded-2xl shadow-[0_0_30px_rgba(255,107,71,0.4)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(255,107,71,0.6)] animate-wobble-grow">
+              SIM! QUERO ASSUMIR O CONTROLE DA MINHA ROTINA
+              <i data-lucide="arrow-right" class="w-6 h-6" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <p class="mt-6 md:mt-8 text-sm md:text-base text-neutral-500 font-medium leading-relaxed max-w-2xl mx-auto">
+            O <strong class="text-neutral-900 font-bold">Sistema de Execução GLP-1</strong> é o guia prático que organiza a rotina diária, a alimentação e os ajustes que a maioria só descobre depois de meses se perdendo.
+          </p>
+
+          <!-- Bullets -->
+          <ul class="mt-10 grid sm:grid-cols-2 gap-4 text-left max-w-3xl mx-auto">
+            <li class="flex items-start gap-3 bg-white/50 backdrop-blur-sm p-3 rounded-xl border border-white/40 shadow-sm">
+              <div class="bg-success-100 rounded-full p-1 shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-success-600 font-bold" aria-hidden="true"></i>
+              </div>
+              <span class="text-neutral-800 font-medium text-sm md:text-base">Rotina diária pronta — do despertar ao jantar</span>
+            </li>
+            <li class="flex items-start gap-3 bg-white/50 backdrop-blur-sm p-3 rounded-xl border border-white/40 shadow-sm">
+              <div class="bg-success-100 rounded-full p-1 shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-success-600 font-bold" aria-hidden="true"></i>
+              </div>
+              <span class="text-neutral-800 font-medium text-sm md:text-base">Listas de alimentos práticas (do que faz bem ao que sabota)</span>
+            </li>
+            <li class="flex items-start gap-3 bg-white/50 backdrop-blur-sm p-3 rounded-xl border border-white/40 shadow-sm">
+              <div class="bg-success-100 rounded-full p-1 shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-success-600 font-bold" aria-hidden="true"></i>
+              </div>
+              <span class="text-neutral-800 font-medium text-sm md:text-base">Checklists semanais que evitam os erros mais comuns</span>
+            </li>
+            <li class="flex items-start gap-3 bg-white/50 backdrop-blur-sm p-3 rounded-xl border border-white/40 shadow-sm">
+              <div class="bg-success-100 rounded-full p-1 shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-success-600 font-bold" aria-hidden="true"></i>
+              </div>
+              <span class="text-neutral-800 font-medium text-sm md:text-base">Modelo de acompanhamento simples (sem planilha)</span>
+            </li>
+            <li class="flex items-start gap-3 sm:col-span-2 sm:justify-center bg-white/50 backdrop-blur-sm p-3 rounded-xl border border-white/40 shadow-sm max-w-xl mx-auto w-full">
+              <div class="bg-success-100 rounded-full p-1 shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-4 h-4 text-success-600 font-bold" aria-hidden="true"></i>
+              </div>
+              <span class="text-neutral-800 font-medium text-sm md:text-base">Ajustes pra dias de exceção, viagens e fins de semana</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: IDENTIFICAÇÃO (DOR) -->
+    <section class="bg-neutral-100 py-16 md:py-24 fade-in">
+      <div class="max-w-4xl mx-auto px-5 md:px-8">
+
+        <header class="text-center mb-12">
+          <h2 class="text-3xl md:text-5xl font-extrabold text-neutral-900 leading-tight">
+            Vou ser direto com você.
+          </h2>
+          <p class="mt-4 text-lg md:text-xl text-neutral-700 max-w-2xl mx-auto">
+            A medicação faz a parte dela. Mas se você ainda lida com <strong class="text-accent-600">confusão diária, insegurança e improviso</strong>, tem algo faltando.
+          </p>
+        </header>
+
+        <ul class="space-y-4 max-w-2xl mx-auto">
+          <li class="flex items-start gap-4 bg-white p-5 rounded-2xl border border-neutral-200">
+            <i data-lucide="x-circle" class="w-6 h-6 text-accent-600 flex-shrink-0 mt-0.5" aria-hidden="true"></i>
+            <span class="text-neutral-900">Acordar sem saber direito o que comer;</span>
+          </li>
+          <li class="flex items-start gap-4 bg-white p-5 rounded-2xl border border-neutral-200">
+            <i data-lucide="x-circle" class="w-6 h-6 text-accent-600 flex-shrink-0 mt-0.5" aria-hidden="true"></i>
+            <span class="text-neutral-900">Passar o dia em dúvida se está fazendo as escolhas certas;</span>
+          </li>
+          <li class="flex items-start gap-4 bg-white p-5 rounded-2xl border border-neutral-200">
+            <i data-lucide="x-circle" class="w-6 h-6 text-accent-600 flex-shrink-0 mt-0.5" aria-hidden="true"></i>
+            <span class="text-neutral-900">Chegar à noite com a sensação de não ter aproveitado o potencial do remédio.</span>
+          </li>
+        </ul>
+
+        <div class="mt-12 text-center max-w-2xl mx-auto space-y-3">
+          <p class="text-xl md:text-2xl font-bold text-neutral-900">O problema não é o GLP-1. E não é falta de disciplina.</p>
+          <p class="text-xl md:text-2xl font-bold text-accent-500">É falta de um sistema.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: APRESENTAÇÃO DA SOLUÇÃO (DARK) -->
+    <section class="bg-gradient-to-br from-neutral-800 to-neutral-900 py-16 md:py-24 text-white fade-in">
+      <div class="max-w-6xl mx-auto px-5 md:px-8">
+
+        <header class="text-center mb-12 max-w-3xl mx-auto">
+          <h2 class="text-3xl md:text-5xl font-extrabold leading-tight">
+            A solução: um <span class="text-accent-500">Sistema de Execução GLP-1</span>
+          </h2>
+          <p class="mt-5 text-white/80 text-lg">
+            Pessoas que tiram o máximo do tratamento só param de tomar decisão toda hora. A rotina já está pronta, no papel.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+
+          <!-- Mockup do produto -->
+          <div class="relative flex justify-center">
+            <div class="relative w-full max-w-sm aspect-[3/4] rounded-2xl bg-gradient-to-br from-white to-neutral-100 shadow-2xl overflow-hidden transform rotate-[-2deg]">
+              <div class="absolute inset-0 p-8 flex flex-col">
+                <span class="text-xs font-semibold text-accent-600 tracking-widest">SISTEMA DE EXECUÇÃO</span>
+                <h3 class="mt-3 text-2xl font-extrabold text-neutral-900 leading-tight">Protocolo GLP-1</h3>
+                <p class="text-sm font-semibold text-accent-600">Rotina, Controle e Execução</p>
+                <div class="mt-6 space-y-2">
+                  <div class="h-2 rounded bg-neutral-200 w-5/6"></div>
+                  <div class="h-2 rounded bg-neutral-200 w-4/6"></div>
+                  <div class="h-2 rounded bg-neutral-200 w-3/6"></div>
+                </div>
+                <div class="mt-auto">
+                  <div class="w-16 h-16 rounded-full bg-accent-600 flex items-center justify-center mb-3">
+                    <i data-lucide="stethoscope" class="w-8 h-8 text-white" aria-hidden="true"></i>
+                  </div>
+                  <p class="text-xs text-neutral-700">Guia prático • 7 módulos</p>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -z-0 -inset-4 bg-accent-500/20 blur-3xl rounded-full" aria-hidden="true"></div>
+          </div>
+
+          <!-- Descrição -->
+          <div>
+            <h3 class="text-2xl md:text-3xl font-extrabold mb-4">Como o sistema funciona na prática</h3>
+            <p class="text-white/80 mb-8">
+              Um guia 100% prático, direto ao ponto, criado pra quem quer parar de improvisar e começar a executar.
+            </p>
+
+            <ul class="space-y-5">
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-white/10 flex-shrink-0 flex items-center justify-center">
+                  <i data-lucide="file-text" class="w-5 h-5 text-accent-500" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <p class="font-bold">O que é</p>
+                  <p class="text-white/80 text-sm">Um protocolo em linguagem simples, com checklists, listas e roteiros prontos pra aplicar hoje mesmo.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-white/10 flex-shrink-0 flex items-center justify-center">
+                  <i data-lucide="target" class="w-5 h-5 text-accent-500" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <p class="font-bold">Pra quem é</p>
+                  <p class="text-white/80 text-sm">Pessoas que querem clareza e organização no uso do GLP-1, sem dieta restritiva e sem complicação.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-white/10 flex-shrink-0 flex items-center justify-center">
+                  <i data-lucide="download" class="w-5 h-5 text-accent-500" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <p class="font-bold">Como você consome</p>
+                  <p class="text-white/80 text-sm">Acesso digital imediato. Leitura leve, em uma tarde você entende e já começa a colocar em prática.</p>
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div class="w-10 h-10 rounded-xl bg-white/10 flex-shrink-0 flex items-center justify-center">
+                  <i data-lucide="trophy" class="w-5 h-5 text-accent-500" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <p class="font-bold">O ganho central</p>
+                  <p class="text-white/80 text-sm">Parar de tomar decisão o tempo todo. Ter clareza pra saber exatamente o que fazer hoje, amanhã e na semana que vem.</p>
+                </div>
+              </li>
+            </ul>
+            
+            <div class="mt-10">
+              <a href="#planos" class="inline-flex items-center justify-center gap-3 w-full sm:w-auto bg-accent-600 hover:bg-accent-500 text-white font-bold text-lg md:text-xl px-8 py-5 rounded-xl shadow-lg shadow-accent-600/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-xl">
+                QUERO O SISTEMA COMPLETO
+                <i data-lucide="arrow-right" class="w-6 h-6" aria-hidden="true"></i>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 5: MÓDULOS -->
+    <section class="bg-white py-16 md:py-24 fade-in">
+      <div class="max-w-6xl mx-auto px-5 md:px-8">
+
+        <header class="text-center mb-14 max-w-3xl mx-auto">
+          <span class="inline-block bg-accent-100 text-accent-600 rounded-full px-4 py-1.5 text-sm font-semibold">
+            CONTEÚDO DO PROTOCOLO
+          </span>
+          <h2 class="mt-4 text-3xl md:text-5xl font-extrabold text-neutral-900 leading-tight">
+            O que você vai encontrar dentro
+          </h2>
+          <p class="mt-4 text-lg text-neutral-700">
+            Cada módulo foi desenhado pra resolver um problema real do dia a dia de quem usa GLP-1.
+          </p>
+        </header>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <article class="relative bg-white rounded-2xl border border-neutral-200 p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-300 group overflow-hidden">
+            <span class="absolute -top-4 -right-4 text-8xl font-black text-neutral-50 opacity-60 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 tabular-nums pointer-events-none" aria-hidden="true">01</span>
+            <div class="w-12 h-12 rounded-xl bg-accent-50 flex items-center justify-center mb-6 ring-1 ring-accent-100/50 shadow-inner group-hover:bg-accent-600 transition-colors duration-300 relative z-10"><i data-lucide="clock" class="w-6 h-6 text-accent-600 group-hover:text-white transition-colors duration-300" aria-hidden="true"></i></div>
+            <h3 class="text-[11px] font-black text-accent-600 tracking-widest uppercase mb-2 relative z-10">MÓDULO 1</h3>
+            <p class="text-xl font-extrabold text-neutral-900 mb-5 leading-tight group-hover:text-accent-600 transition-colors relative z-10">A Rotina Base (24 Horas Organizadas)</p>
+            <ul class="space-y-3 text-sm text-neutral-600 font-medium relative z-10">
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>O que fazer ao acordar, à tarde e antes de dormir</li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>Janelas ideais de hidratação e movimento</li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>Como organizar o dia de aplicação</li>
+            </ul>
+          </article>
+
+          <article class="relative bg-white rounded-2xl border border-neutral-200 p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-300 group overflow-hidden">
+            <span class="absolute -top-4 -right-4 text-8xl font-black text-neutral-50 opacity-60 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 tabular-nums pointer-events-none" aria-hidden="true">02</span>
+            <div class="w-12 h-12 rounded-xl bg-accent-50 flex items-center justify-center mb-6 ring-1 ring-accent-100/50 shadow-inner group-hover:bg-accent-600 transition-colors duration-300 relative z-10"><i data-lucide="utensils" class="w-6 h-6 text-accent-600 group-hover:text-white transition-colors duration-300" aria-hidden="true"></i></div>
+            <h3 class="text-[11px] font-black text-accent-600 tracking-widest uppercase mb-2 relative z-10">MÓDULO 2</h3>
+            <p class="text-xl font-extrabold text-neutral-900 mb-5 leading-tight group-hover:text-accent-600 transition-colors relative z-10">A Lista Definitiva de Alimentos</p>
+            <ul class="space-y-3 text-sm text-neutral-600 font-medium relative z-10">
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>Alimentos para saciedade prolongada</li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>O que intensifica enjoo e deve ser evitado</li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>Combinações para dias de pouca fome</li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>Lista de compras pronta para imprimir</li>
+            </ul>
+          </article>
+
+          <article class="relative bg-white rounded-2xl border border-neutral-200 p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-300 group overflow-hidden">
+            <span class="absolute -top-4 -right-4 text-8xl font-black text-neutral-50 opacity-60 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 tabular-nums pointer-events-none" aria-hidden="true">03</span>
+            <div class="w-12 h-12 rounded-xl bg-accent-50 flex items-center justify-center mb-6 ring-1 ring-accent-100/50 shadow-inner group-hover:bg-accent-600 transition-colors duration-300 relative z-10"><i data-lucide="chef-hat" class="w-6 h-6 text-accent-600 group-hover:text-white transition-colors duration-300" aria-hidden="true"></i></div>
+            <h3 class="text-[11px] font-black text-accent-600 tracking-widest uppercase mb-2 relative z-10">MÓDULO 3</h3>
+            <p class="text-xl font-extrabold text-neutral-900 mb-5 leading-tight group-hover:text-accent-600 transition-colors relative z-10">Sistema de Refeições Sem Decisão</p>
+            <ul class="space-y-3 text-sm text-neutral-600 font-medium relative z-10">
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>3 modelos de café da manhã</li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>5 modelos práticos de almoço e jantar</li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>4 opções de lanches rápidos</li>
+            </ul>
+          </article>
+
+          <article class="relative bg-white rounded-2xl border border-neutral-200 p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-300 group overflow-hidden">
+            <span class="absolute -top-4 -right-4 text-8xl font-black text-neutral-50 opacity-60 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 tabular-nums pointer-events-none" aria-hidden="true">04</span>
+            <div class="w-12 h-12 rounded-xl bg-accent-50 flex items-center justify-center mb-6 ring-1 ring-accent-100/50 shadow-inner group-hover:bg-accent-600 transition-colors duration-300 relative z-10"><i data-lucide="activity" class="w-6 h-6 text-accent-600 group-hover:text-white transition-colors duration-300" aria-hidden="true"></i></div>
+            <h3 class="text-[11px] font-black text-accent-600 tracking-widest uppercase mb-2 relative z-10">MÓDULO 4</h3>
+            <p class="text-xl font-extrabold text-neutral-900 mb-5 leading-tight group-hover:text-accent-600 transition-colors relative z-10">O Mapa de Sintomas Comuns</p>
+            <ul class="space-y-3 text-sm text-neutral-600 font-medium relative z-10">
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>Ajustes para enjoo e constipação</li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>O que fazer com cansaço extremo</li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>Lidando com a sensação de plenitude</li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>Quando revisar com o seu médico</li>
+            </ul>
+          </article>
+
+          <article class="relative bg-white rounded-2xl border border-neutral-200 p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-300 group overflow-hidden">
+            <span class="absolute -top-4 -right-4 text-8xl font-black text-neutral-50 opacity-60 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 tabular-nums pointer-events-none" aria-hidden="true">05</span>
+            <div class="w-12 h-12 rounded-xl bg-accent-50 flex items-center justify-center mb-6 ring-1 ring-accent-100/50 shadow-inner group-hover:bg-accent-600 transition-colors duration-300 relative z-10"><i data-lucide="clipboard-list" class="w-6 h-6 text-accent-600 group-hover:text-white transition-colors duration-300" aria-hidden="true"></i></div>
+            <h3 class="text-[11px] font-black text-accent-600 tracking-widest uppercase mb-2 relative z-10">MÓDULO 5</h3>
+            <p class="text-xl font-extrabold text-neutral-900 mb-5 leading-tight group-hover:text-accent-600 transition-colors relative z-10">Ficha de Acompanhamento Semanal</p>
+            <ul class="space-y-3 text-sm text-neutral-600 font-medium relative z-10">
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>Registro de peso, medidas e sintomas</li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>Avaliação de aderência da rotina</li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>Definição de ajustes para a próxima semana</li>
+            </ul>
+          </article>
+
+          <article class="relative bg-white rounded-2xl border border-neutral-200 p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:-translate-y-1.5 transition-all duration-300 group overflow-hidden">
+            <span class="absolute -top-4 -right-4 text-8xl font-black text-neutral-50 opacity-60 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 tabular-nums pointer-events-none" aria-hidden="true">06</span>
+            <div class="w-12 h-12 rounded-xl bg-accent-50 flex items-center justify-center mb-6 ring-1 ring-accent-100/50 shadow-inner group-hover:bg-accent-600 transition-colors duration-300 relative z-10"><i data-lucide="plane" class="w-6 h-6 text-accent-600 group-hover:text-white transition-colors duration-300" aria-hidden="true"></i></div>
+            <h3 class="text-[11px] font-black text-accent-600 tracking-widest uppercase mb-2 relative z-10">MÓDULO 6</h3>
+            <p class="text-xl font-extrabold text-neutral-900 mb-5 leading-tight group-hover:text-accent-600 transition-colors relative z-10">Protocolo dos Dias Difíceis</p>
+            <ul class="space-y-3 text-sm text-neutral-600 font-medium relative z-10">
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>Roteiros para finais de semana</li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>Como manter a linha em viagens</li>
+              <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>Estratégias para jantares fora e eventos sociais</li>
+            </ul>
+          </article>
+
+          <article class="relative bg-gradient-to-br from-neutral-900 to-black rounded-2xl border border-neutral-800 p-8 md:p-10 shadow-[0_12px_40px_rgba(0,0,0,0.2)] hover:-translate-y-1.5 transition-all duration-300 sm:col-span-2 lg:col-span-3 group overflow-hidden">
+            <span class="absolute -top-4 -right-4 text-8xl font-black text-neutral-50 opacity-60 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500 tabular-nums pointer-events-none" aria-hidden="true">07</span>
+            <div class="max-w-3xl">
+              <div class="w-12 h-12 rounded-xl bg-accent-50 flex items-center justify-center mb-6 ring-1 ring-accent-100/50 shadow-inner group-hover:bg-accent-600 transition-colors duration-300 relative z-10"><i data-lucide="alert-triangle" class="w-6 h-6 text-accent-600 group-hover:text-white transition-colors duration-300" aria-hidden="true"></i></div>
+              <h3 class="text-[11px] font-black text-accent-500 tracking-widest uppercase mb-2 relative z-10">MÓDULO 7 — O CHECKMATE</h3>
+              <p class="text-3xl font-black text-white mb-6 leading-tight relative z-10">Os 11 Erros Mais Comuns <span class="text-neutral-400 font-medium">(e como sair deles)</span></p>
+              <ul class="space-y-3 text-sm text-neutral-600 font-medium relative z-10">
+                <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>A lista exata do que trava o progresso</li>
+                <li class="flex items-start gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-success-500 flex-shrink-0 mt-0.5" aria-hidden="true"></i>Ajustes rápidos de curso</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+
+        
+
+      </div>
+    </section>
+
+    <!-- SEÇÃO 9: BÔNUS -->
+    <section class="bg-neutral-900 py-16 md:py-24 text-white fade-in">
+      <div class="max-w-6xl mx-auto px-5 md:px-8">
+
+        <header class="text-center mb-14 max-w-3xl mx-auto">
+          <span class="inline-flex items-center gap-2 bg-accent-500/20 text-accent-500 rounded-full px-4 py-1.5 text-sm font-semibold">
+            <i data-lucide="gift" class="w-4 h-4" aria-hidden="true"></i>
+            INCLUÍDOS HOJE
+          </span>
+          <h2 class="mt-4 text-3xl md:text-5xl font-extrabold leading-tight">
+            <span class="text-accent-500">BÔNUS EXCLUSIVOS</span>
+          </h2>
+        </header>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <article class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all">
+            <div class="w-14 h-14 rounded-xl bg-accent-500/20 flex items-center justify-center mb-4">
+              <i data-lucide="gift" class="w-7 h-7 text-accent-500" aria-hidden="true"></i>
+            </div>
+            <p class="text-xs text-accent-500 font-bold tracking-wider mb-1">BÔNUS #1</p>
+            <h3 class="text-lg font-bold mb-3">Guia "Os Primeiros 14 Dias"</h3>
+            <p class="text-sm text-white/70 mb-4">Um roteiro dia a dia pra quem está começando agora — ou pra quem quer "resetar" a rotina e começar do zero, com pé direito.</p>
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+              <span class="text-sm text-white/50 strike-heavy">R$ 47</span>
+              <span class="text-sm font-bold text-accent-500">GRÁTIS</span>
+            </div>
+          </article>
+
+          <article class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all">
+            <div class="w-14 h-14 rounded-xl bg-accent-500/20 flex items-center justify-center mb-4">
+              <i data-lucide="droplets" class="w-7 h-7 text-accent-500" aria-hidden="true"></i>
+            </div>
+            <p class="text-xs text-accent-500 font-bold tracking-wider mb-1">BÔNUS #2</p>
+            <h3 class="text-lg font-bold mb-3">Caderno de Hidratação Estratégica</h3>
+            <p class="text-sm text-white/70 mb-4">Um guia prático com janelas, metas e modelos pra você nunca mais terminar o dia bebendo menos água do que precisa.</p>
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+              <span class="text-sm text-white/50 strike-heavy">R$ 27</span>
+              <span class="text-sm font-bold text-accent-500">GRÁTIS</span>
+            </div>
+          </article>
+
+          <article class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all">
+            <div class="w-14 h-14 rounded-xl bg-accent-500/20 flex items-center justify-center mb-4">
+              <i data-lucide="shield-check" class="w-7 h-7 text-accent-500" aria-hidden="true"></i>
+            </div>
+            <p class="text-xs text-accent-500 font-bold tracking-wider mb-1">BÔNUS #3</p>
+            <h3 class="text-lg font-bold mb-3">Manual Anti-Recaída</h3>
+            <p class="text-sm text-white/70 mb-4">O que fazer quando você "saiu da linha" — sem culpa, sem drama, sem precisar começar tudo de novo na segunda-feira.</p>
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+              <span class="text-sm text-white/50 strike-heavy">R$ 37</span>
+              <span class="text-sm font-bold text-accent-500">GRÁTIS</span>
+            </div>
+          </article>
+
+          <article class="bg-gradient-to-br from-neutral-800/40 to-neutral-800/10 backdrop-blur border-2 border-accent-600 rounded-2xl p-6 relative">
+            <span class="absolute -top-3 left-4 inline-block bg-neutral-700 text-white text-[10px] font-bold tracking-wider px-3 py-1 rounded-full">
+              EXCLUSIVO AVANÇADO
+            </span>
+            <div class="w-14 h-14 rounded-xl bg-neutral-700/50 flex items-center justify-center mb-4 mt-2">
+              <i data-lucide="gift" class="w-7 h-7 text-accent-500" aria-hidden="true"></i>
+            </div>
+            <p class="text-xs text-accent-500 font-bold tracking-wider mb-1">BÔNUS #4</p>
+            <h3 class="text-lg font-bold mb-3">Pacote de Modelos de Refeição em PDF</h3>
+            <p class="text-sm text-white/70 mb-4">Pronto pra imprimir, montar cardápio da semana e organizar a lista de compras de uma vez só.</p>
+            <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+              <span class="text-sm text-white/50 strike-heavy">R$ 57</span>
+              <span class="text-sm font-bold text-accent-500">GRÁTIS</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 8: APRESENTAÇÃO DOS PLANOS -->
+    <section id="planos" class="relative py-16 md:py-24 fade-in bg-gradient-to-b from-white via-neutral-100/30 to-white">
+      <div class="max-w-6xl mx-auto px-5 md:px-8">
+
+        <header class="text-center mb-14 max-w-3xl mx-auto">
+          <span class="inline-block bg-accent-100 text-accent-600 rounded-full px-4 py-1.5 text-sm font-semibold">
+            ESCOLHA O SEU PLANO
+          </span>
+          <h2 class="mt-4 text-3xl md:text-5xl font-extrabold text-neutral-900 leading-tight">
+            Dois caminhos. Um destino: <span class="text-accent-500">rotina no lugar.</span>
+          </h2>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-6 lg:gap-8 items-start">
+          <!-- PLANO BÁSICO -->
+          <article class="bg-[#111111] text-white rounded-xl border border-neutral-800 p-6 md:p-8 relative shadow-[0_0_50px_rgba(249,115,22,0.3)] transition-all hover:scale-[1.01]">
+            
+            <div class="text-center mb-5">
+              <h3 class="text-2xl font-extrabold text-white mb-0.5">Plano Básico</h3>
+              <p class="text-[10px] text-neutral-400 font-bold tracking-widest uppercase">PAGAMENTO ÚNICO</p>
+            </div>
+
+            <div class="text-center mb-6 border-b border-neutral-800 pb-6">
+              <div class="flex justify-center mb-4">
+                <div class="relative inline-block mt-2">
+                  <!-- Contorno vermelho imperfeito (SVG à mão) -->
+                  <svg class="absolute w-[160%] h-[170%] -left-[30%] -top-[35%] text-red-600 z-0 pointer-events-none opacity-90 drop-shadow-[0_0_8px_rgba(220,38,38,0.5)]" viewBox="0 0 200 100" preserveAspectRatio="none">
+                    <path d="M 25 50 C 25 15, 80 5, 150 15 C 195 22, 190 75, 160 85 C 110 100, 30 95, 15 65 C 5 45, 15 20, 50 15" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <p class="text-5xl font-black text-orange-500 tabular-nums leading-none drop-shadow-md relative z-10 tracking-tight" style="-webkit-text-stroke: 2px #F97316;">R$47<span class="text-3xl" style="-webkit-text-stroke: 1px #F97316;">,90</span></p>
+                </div>
+              </div>
+              <p class="text-xs text-neutral-300 font-medium">Para você que deseja o básico para começar com eficiência.</p>
+            </div>
+
+            <ul class="space-y-4 mb-8 text-sm text-neutral-200">
+              <li class="flex items-start gap-3">
+                <i data-lucide="check" class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 font-black" aria-hidden="true"></i>
+                <span><strong>Guia Prático Básico:</strong> Passo a Passo Claro, Rápido, Descomplicado e Completo.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check" class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 font-black" aria-hidden="true"></i>
+                <span><strong>Materiais Digitais:</strong> Todos os materiais prontos pra download imediato.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check" class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 font-black" aria-hidden="true"></i>
+                <span><strong>7 Dias de Garantia</strong></span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check" class="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 font-black" aria-hidden="true"></i>
+                <span><strong>Acesso de 1 ano</strong></span>
+              </li>
+            </ul>
+
+            <a href="#planos" class="block w-full text-center bg-gradient-to-b from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white font-black text-lg px-4 py-4 rounded-lg shadow-[0_0_20px_rgba(249,115,22,0.4)] transition-all duration-200 animate-wobble-grow">
+              QUERO COMEÇAR PELO BÁSICO
+            </a>
+            
+            <div class="mt-4 text-center">
+              <p class="text-[10px] text-neutral-500 font-bold mb-2">Acesso imediato à plataforma. Compra 100% segura. <br>Garantia de 7 dias ou seu dinheiro de volta!</p>
+              <div class="inline-flex items-center justify-center bg-orange-500 text-white rounded-full p-1.5 shadow-[0_0_10px_rgba(249,115,22,0.5)]">
+                <i data-lucide="arrow-down" class="w-4 h-4" aria-hidden="true"></i>
+              </div>
+            </div>
+            
+          </article>
+
+          <!-- PLANO COMPLETO (DESTAQUE) -->
+          <article class="bg-white rounded-xl border-t-[10px] border-green-600 p-6 md:p-8 relative shadow-[0_0_50px_rgba(22,163,74,0.2)] transition-all hover:scale-[1.01]">
+            <div class="absolute -top-[14px] left-1/2 -translate-x-1/2 w-max">
+              <span class="inline-flex items-center justify-center bg-green-600 text-white rounded-full px-6 py-0.5 text-[11px] font-black tracking-widest shadow-md uppercase">
+                MAIS VENDIDO
+              </span>
+            </div>
+
+            <div class="text-center mb-6 mt-3 border-b border-neutral-200 pb-6">
+              <div class="flex justify-center gap-0.5 mb-2 text-orange-400">
+                <i data-lucide="star" class="w-4 h-4 fill-current" aria-hidden="true"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current" aria-hidden="true"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current" aria-hidden="true"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current" aria-hidden="true"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-current" aria-hidden="true"></i>
+              </div>
+              <h3 class="text-2xl font-extrabold text-neutral-900 mb-1">Plano Completo</h3>
+              <p class="text-[11px] text-neutral-500 font-extrabold uppercase">DE <span class="line-through text-red-600 decoration-red-600 decoration-2">R$147,00</span> POR APENAS</p>
+              
+              <p class="text-7xl font-black text-green-600 tabular-nums leading-none mt-2 drop-shadow-sm">R$96<span class="text-4xl">,90</span></p>
+              <p class="text-[11px] text-neutral-500 mt-2 font-bold uppercase">À vista ou em até 12x no cartão</p>
+              
+              <p class="text-xs font-black text-neutral-900 mt-4">+ 5.421 Pessoas escolheram essa opção</p>
+            </div>
+
+            <ul class="space-y-4 mb-8 text-sm text-neutral-700">
+              <li class="flex items-start gap-3">
+                <i data-lucide="check" class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5 font-black" aria-hidden="true"></i>
+                <span><strong>Material Completo:</strong> Passo a Passo Prático e Completo com todos os Bônus Inclusos.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check" class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5 font-black" aria-hidden="true"></i>
+                <span><strong>Bônus 01 - Plano de Refeições Expandido:</strong> modelos extras de refeição para a semana inteira.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check" class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5 font-black" aria-hidden="true"></i>
+                <span><strong>Bônus 02 - Mini-Manual de Sintomas:</strong> guia ampliado com ajustes práticos diários.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check" class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5 font-black" aria-hidden="true"></i>
+                <span><strong>Bônus 03 - Roteiro de Consulta:</strong> perguntas certas pra fazer pro seu médico.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i data-lucide="check" class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5 font-black" aria-hidden="true"></i>
+                <span><strong>Acesso Vitalício Garantido</strong></span>
+              </li>
+            </ul>
+
+            <a href="#planos" class="block w-full text-center bg-gradient-to-b from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-black text-xl px-4 py-4 rounded-lg shadow-[0_0_20px_rgba(22,163,74,0.4)] transition-all duration-200 animate-wobble-grow">
+              QUERO O SISTEMA COMPLETO + BÔNUS
+            </a>
+            
+            <div class="mt-4 text-center">
+              <p class="text-[10px] text-neutral-500 font-bold">GARANTIA DE 7 DIAS • COMPRA SEGURA</p>
+              <div class="flex items-center justify-center gap-2 mt-2">
+                <img src="https://logospng.org/download/visa/logo-visa-2048.png" alt="Visa" class="h-4 grayscale opacity-60">
+                <img src="https://logospng.org/download/mastercard/logo-mastercard-2048.png" alt="Mastercard" class="h-4 grayscale opacity-60">
+              </div>
+            </div>
+          </article>
+</div>
+    </section>
+
+    
+
+    <!-- SEÇÃO 12: GARANTIA -->
+    <section class="bg-white py-16 md:py-24 fade-in">
+      <div class="max-w-3xl mx-auto px-5 md:px-8">
+
+        <div class="bg-white rounded-2xl border-2 border-success-500 p-8 md:p-12 text-center shadow-xl shadow-success-500/10">
+
+          <div class="w-28 h-28 rounded-full bg-success-100 flex items-center justify-center mx-auto mb-6 border-4 border-success-500">
+            <i data-lucide="shield-check" class="w-16 h-16 text-success-500" aria-hidden="true"></i>
+          </div>
+
+          <span class="inline-block bg-success-500 text-white rounded-full px-5 py-2 text-sm font-bold tracking-wider">
+            GARANTIA DE 7 DIAS
+          </span>
+
+          <h2 class="mt-5 text-3xl md:text-4xl font-extrabold text-neutral-900 leading-tight">
+            Risco zero. A decisão é 100% sua.
+          </h2>
+
+          <p class="mt-5 text-neutral-700 text-lg leading-relaxed max-w-xl mx-auto">
+            Você tem 7 dias completos pra acessar o conteúdo, ler, aplicar e avaliar se faz sentido pra você. Se em qualquer momento desse período achar que o protocolo não é pro seu caso, devolvemos <strong class="text-success-500">100% do valor</strong>. Sem perguntas. Sem burocracia.
+          </p>
+
+          <div class="mt-8 flex flex-wrap justify-center gap-3 text-sm text-neutral-700">
+            <span class="inline-flex items-center gap-2 bg-neutral-100 px-3 py-1.5 rounded-full">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-success-500" aria-hidden="true"></i>
+              Reembolso integral
+            </span>
+            <span class="inline-flex items-center gap-2 bg-neutral-100 px-3 py-1.5 rounded-full">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-success-500" aria-hidden="true"></i>
+              Sem letras miúdas
+            </span>
+            <span class="inline-flex items-center gap-2 bg-neutral-100 px-3 py-1.5 rounded-full">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-success-500" aria-hidden="true"></i>
+              Processo em 1 email
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 13: FAQ -->
+    <section class="bg-white py-16 md:py-24 fade-in">
+      <div class="max-w-4xl mx-auto px-5 md:px-8">
+        <header class="text-center mb-14">
+          <span class="inline-block bg-neutral-200 text-neutral-900 rounded-full px-4 py-1.5 text-sm font-semibold">
+            DÚVIDAS FREQUENTES
+          </span>
+          <h2 class="mt-4 text-3xl md:text-5xl font-extrabold text-neutral-900 leading-tight">
+            Ainda com dúvida?
+          </h2>
+        </header>
+
+        <div class="space-y-4 max-w-3xl mx-auto">
+          
+          <details class="group bg-neutral-100 rounded-2xl border border-neutral-200 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 md:p-6 text-neutral-900 font-bold focus:outline-none">
+              <span class="text-lg">O protocolo serve para qual medicamento?</span>
+              <i data-lucide="chevron-down" class="chev w-5 h-5 text-accent-500 shrink-0 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="px-5 md:px-6 pb-5 md:pb-6 text-neutral-700 leading-relaxed">
+              O sistema foi estruturado para atender usuários de qualquer medicação da classe GLP-1 (Ozempic, Wegovy, Mounjaro, Rybelsus, etc). Os efeitos práticos na rotina, os desafios gastrointestinais e a necessidade de acompanhamento são os mesmos.
+            </div>
+          </details>
+
+          <details class="group bg-neutral-100 rounded-2xl border border-neutral-200 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 md:p-6 text-neutral-900 font-bold focus:outline-none">
+              <span class="text-lg">Substitui a consulta com meu médico?</span>
+              <i data-lucide="chevron-down" class="chev w-5 h-5 text-accent-500 shrink-0 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="px-5 md:px-6 pb-5 md:pb-6 text-neutral-700 leading-relaxed">
+              De forma alguma. O guia foca na sua <strong>execução diária em casa</strong>. Ele entra como um complemento organizador para garantir que a rotina entre uma consulta e outra seja seguida sem improviso.
+            </div>
+          </details>
+
+          <details class="group bg-neutral-100 rounded-2xl border border-neutral-200 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 md:p-6 text-neutral-900 font-bold focus:outline-none">
+              <span class="text-lg">Como recebo o acesso?</span>
+              <i data-lucide="chevron-down" class="chev w-5 h-5 text-accent-500 shrink-0 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="px-5 md:px-6 pb-5 md:pb-6 text-neutral-700 leading-relaxed">
+              Após a confirmação do pagamento, você recebe imediatamente um email com os dados de acesso para nossa área de membros exclusiva, onde todo o material e os bônus estarão disponíveis.
+            </div>
+          </details>
+
+          <details class="group bg-neutral-100 rounded-2xl border border-neutral-200 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex cursor-pointer items-center justify-between gap-1.5 p-5 md:p-6 text-neutral-900 font-bold focus:outline-none">
+              <span class="text-lg">E se eu não gostar do formato?</span>
+              <i data-lucide="chevron-down" class="chev w-5 h-5 text-accent-500 shrink-0 group-open:rotate-180 transition-transform"></i>
+            </summary>
+            <div class="px-5 md:px-6 pb-5 md:pb-6 text-neutral-700 leading-relaxed">
+              Você tem a garantia incondicional de 7 dias. Se acessar o material e sentir que não ajuda a organizar sua rotina, basta um email e devolvemos 100% do seu dinheiro, sem ressentimentos.
+            </div>
+          </details>
+          
+        </div>
+
+        <!-- CTA Final -->
+        <div class="mt-16 text-center">
+          <p class="mb-6 text-xl md:text-2xl font-bold text-neutral-900 italic max-w-2xl mx-auto">
+            Menos do que uma refeição que <span class="text-accent-500">NÃO combina</span> com seu protocolo.
+          </p>
+          <a href="#planos" class="inline-flex items-center justify-center gap-3 w-full sm:w-auto bg-accent-600 hover:bg-accent-500 text-white font-bold text-lg md:text-xl px-10 py-6 rounded-xl shadow-2xl shadow-accent-600/40 transition-all duration-200 hover:scale-[1.02] animate-pulse">
+            QUERO O PROTOCOLO GLP-1 AGORA
+            <i data-lucide="arrow-right" class="w-6 h-6" aria-hidden="true"></i>
+          </a>
+          <p class="mt-4 text-sm text-neutral-500 flex items-center justify-center gap-2">
+            <i data-lucide="lock" class="w-4 h-4" aria-hidden="true"></i>
+            Compra 100% segura • Acesso imediato
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SEÇÃO 14: FOOTER -->
+  <footer class="bg-neutral-900 border-t border-white/10 py-12 text-white/70">
+    <div class="max-w-6xl mx-auto px-5 md:px-8">
+
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex flex-wrap items-center gap-5 text-sm">
+          <a href="#" class="hover:text-white transition-colors">Termos de uso</a>
+          <a href="#" class="hover:text-white transition-colors">Política de privacidade</a>
+          <a href="#" class="hover:text-white transition-colors">Suporte</a>
+        </div>
+        <p class="text-xs text-white/50">
+          © 2026 Protocolo GLP-1. Todos os direitos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Inicializa Lucide icons
+    if (window.lucide) { lucide.createIcons(); }
+
+        // Fade-in on scroll
+    (function() {
+      const els = document.querySelectorAll('.fade-in');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      els.forEach(el => io.observe(el));
+    })();
+
+    // Loading state nos CTAs (feedback visual ao clicar)
+    document.querySelectorAll('a[href="#planos"], a[href^="#planos"]').forEach(a => {
+      a.addEventListener('click', function() {
+        const icon = this.querySelector('[data-lucide="arrow-right"]');
+        if (icon && !this.dataset.loading) {
+          this.dataset.loading = '1';
+          const original = icon.outerHTML;
+          icon.outerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin" aria-hidden="true"></i>';
+          if (window.lucide) lucide.createIcons();
+          setTimeout(() => {
+            const newIcon = this.querySelector('[data-lucide="loader-2"]');
+            if (newIcon) newIcon.outerHTML = original;
+            if (window.lucide) lucide.createIcons();
+            delete this.dataset.loading;
+          }, 900);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
